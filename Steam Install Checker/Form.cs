@@ -179,7 +179,7 @@ namespace Steam_Install_Checker
                 {
                     tb_output.Text += (@"X - C:\Program Files\Steam\steamapps\common NOT FOUND." + "\r\n");
                     //yesno: does the dir have a steam library?
-                    DialogResult dialogResult = MessageBox.Show("There was no Steam Library found on the C:\\ drive. This is pretty unusual.\nIs there a Steam Library on that drive that wasn't found?", "No Library found.", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show("There was no Steam Library found on the C:\\ drive. This is pretty unusual.\nIs there a Steam Library on that drive that wasn't found?", "C:\\", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         MessageBox.Show("You will now be asked for the location of the common folder. Please enter the path of the common folders location. Be very sure to write it like this:\n\nC:\\Program Files\\Steam\\steamapps\\common\n\nIf it's not written like this the program will NOT work correctly.\nBe very sure to get it right.", "CAUTION");
@@ -200,7 +200,7 @@ namespace Steam_Install_Checker
                 {
                     tb_output.Text += ("X - " + drive + @"SteamLibrary\steamapps\common NOT FOUND." + "\r\n");
                     //yesno: does the drive have a steam library?
-                    DialogResult dialogResult = MessageBox.Show("There was no Steam Library found on the " + drive + " drive.\nIs there a Steam Library on that drive?", "No Library found.", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show("There was no Steam Library found on the " + drive + " drive.\nIs there a Steam Library on that drive?", drive, MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         MessageBox.Show("You will now be asked for the location of the common folder. Please enter the path of the common folders location. Be very sure to write it like this:\n\n" + drive +"some_location\\SteamLibrary\\steamapps\\common\n\nIf it's not written like this the program will NOT work correctly.\nBe very sure to get it right.", "CAUTION");
@@ -214,7 +214,7 @@ namespace Steam_Install_Checker
         void ManualSelect(ref Stack<string> locs, string drive = "C:\\") 
         {
             string alternative = Prompt.ShowDialog("Enter Path", "Enter Path (" + drive + " drive)");
-            if ((Directory.Exists(alternative)) && (alternative.Substring(alternative.Length - 16) == @"steamapps\common") && !locs.Contains(alternative))
+            if ((Directory.Exists(alternative)) && (alternative.Length>16) && (alternative.Substring(alternative.Length - 16) == @"steamapps\common") && !locs.Contains(alternative))
             {
                 locs.Push(alternative);
                 tb_output.AppendText(@"O - " + alternative + " found." + "\r\n");
