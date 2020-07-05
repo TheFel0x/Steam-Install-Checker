@@ -269,5 +269,4 @@ namespace Steam_Install_Checker
             return prompt.ShowDialog() == DialogResult.OK ? listBox.Text : "none";
         }
     }
-
 }
