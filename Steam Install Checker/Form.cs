@@ -180,17 +180,7 @@ namespace Steam_Install_Checker
                     if (dialogResult == DialogResult.Yes)
                     {
                         MessageBox.Show("You will now be asked for the location of the common folder. Please enter the path of the common folders location. Be very sure to write it like this:\n\nC:\\Program Files\\Steam\\steamapps\\common\n\nIf it's not written like this the program will NOT work correctly.\nBe very sure to get it right.", "CAUTION");
-                        string alternative = Prompt.ShowDialog("Enter Path", "Enter Path  (C:\\ drive)");
-                        if (Directory.Exists(alternative)) 
-                        {
-                            locs.Push(alternative);
-                            tb_output.Text += (@"O - " + alternative + " found." + "\r\n");
-                        }
-                        else 
-                        {
-                            MessageBox.Show("The entered path was not found and has been discarded.");
-                            tb_output.Text += (@"X - " + alternative + " NOT FOUND." + "\r\n");
-                        }
+                        ManualSelect(ref locs);
                     }
                 }
             }
@@ -211,22 +201,26 @@ namespace Steam_Install_Checker
                     if (dialogResult == DialogResult.Yes)
                     {
                         MessageBox.Show("You will now be asked for the location of the common folder. Please enter the path of the common folders location. Be very sure to write it like this:\n\n" + drive +"some_location\\SteamLibrary\\steamapps\\common\n\nIf it's not written like this the program will NOT work correctly.\nBe very sure to get it right.", "CAUTION");
-                        string alternative = Prompt.ShowDialog("Enter Path", "Enter Path (" + drive + " drive)");
-                        if ((Directory.Exists(alternative)) && (alternative.Substring(alternative.Length-16) == @"steamapps\common") && !locs.Contains(alternative))
-                        {
-                            locs.Push(alternative);
-                            tb_output.AppendText(@"O - " + alternative + " found." + "\r\n");
-                        }
-                        else
-                        {
-                            MessageBox.Show("The entered path was not found and has been discarded.");
-                            tb_output.AppendText(@"X - " + alternative + " NOT FOUND." + "\r\n");
-                        }
+                        ManualSelect(ref locs, drive);
                     }
                 }
             }
             //return all locations
             return locs;
+        }
+        void ManualSelect(ref Stack<string> locs, string drive = "C:\\") 
+        {
+            string alternative = Prompt.ShowDialog("Enter Path", "Enter Path (" + drive + " drive)");
+            if ((Directory.Exists(alternative)) && (alternative.Substring(alternative.Length - 16) == @"steamapps\common") && !locs.Contains(alternative))
+            {
+                locs.Push(alternative);
+                tb_output.AppendText(@"O - " + alternative + " found." + "\r\n");
+            }
+            else
+            {
+                MessageBox.Show("The entered path was not found and has been discarded.");
+                tb_output.AppendText(@"X - " + alternative + " NOT FOUND." + "\r\n");
+            }
         }
     }
 }
