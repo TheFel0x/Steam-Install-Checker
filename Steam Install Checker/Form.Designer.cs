@@ -51,15 +51,15 @@
             this.tb_output.Size = new System.Drawing.Size(776, 353);
             this.tb_output.TabIndex = 1;
             // 
-            // Form1
+            // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tb_output);
             this.Controls.Add(this.btn_analyze);
-            this.Name = "Form1";
-            this.Text = "Check Steam Duplicates";
+            this.Name = "Form";
+            this.Text = "Steam Install Checker";
             this.ResumeLayout(false);
             this.PerformLayout();
 
