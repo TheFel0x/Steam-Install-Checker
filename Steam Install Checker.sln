@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steam Install Checker", "Steam Install Checker\Steam Install Checker.csproj", "{2CF118D0-2AFF-42F6-A843-8E39670E95FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CF118D0-2AFF-42F6-A843-8E39670E95FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CF118D0-2AFF-42F6-A843-8E39670E95FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CF118D0-2AFF-42F6-A843-8E39670E95FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CF118D0-2AFF-42F6-A843-8E39670E95FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C924CC96-EADE-49CF-BC81-B64D16A503C2}
+	EndGlobalSection
+EndGlobal
