@@ -18,12 +18,17 @@ namespace Steam_Install_Checker
             InitializeComponent();
         }
 
-        private void btn_analyze_Click(object sender, EventArgs e)
+        private void Analyze_Click(object sender, EventArgs e)
+        {
+            Analyze();
+        }
+
+        public void Analyze() 
         {
             tb_output.Text = "O - Analyzing...\r\n\r\n";
-            string[] drives = allDrives().Reverse().ToArray<string>();
+            string[] drives = AllDrives().Reverse().ToArray<string>();
             tb_output.Text += "\r\nO - Found drives.\r\n\r\n";
-            List<string> locs = locations(drives).Reverse().ToList();
+            List<string> locs = Locations(drives).Reverse().ToList();
             tb_output.Text += "\r\nO - Found locations.\r\n\r\n";
             //make Dictionary
             Dictionary<string/*drives*/, List<string/*games*/>> gameDictionary = new Dictionary<string, List<string>>();
@@ -75,7 +80,7 @@ namespace Steam_Install_Checker
                 catch { }
             }
             //dup dictionary finished
-            tb_output.Text += "\r\nO - DUP Dictionary created.\r\n";
+            tb_output.Text += "\r\nO - Duplicate Dictionary created.\r\n";
             foreach (string dup in dups)
             {
                 tb_output.Text += "\r\nLocations of " + dup + ":\r\n";
@@ -84,7 +89,7 @@ namespace Steam_Install_Checker
                     tb_output.Text += drive + "\r\n";
                 }
             }
-            if (dups.Count > 0) 
+            if (dups.Count > 0)
             {
                 //yesno: deletion assistant?
                 DialogResult dialogResult = MessageBox.Show("Done. All dups found.\nStart duplicate-deletion-Assistant?", "Done.", MessageBoxButtons.YesNo);
@@ -122,14 +127,14 @@ namespace Steam_Install_Checker
                     }
                     MessageBox.Show("Everything done.");
                 }
-            }            
+            }
             else
             {
                 MessageBox.Show("Done. Congrats! No duplicates found!");
                 tb_output.Text += "\r\n\r\nDONE. NO DUPLICATES FOUND.";
             }
         }
-        Stack<string> allDrives() 
+        Stack<string> AllDrives() 
         {
             char[] alphabet = { 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
             Stack<string> output = new Stack<string>();
@@ -143,7 +148,7 @@ namespace Steam_Install_Checker
             }
             return output;
         }
-        Stack<string> locations(string[] drives) 
+        Stack<string> Locations(string[] drives) 
         {
             Stack<string> locs = new Stack<string>();
             //assume and test if there is one on C on the standard directory
