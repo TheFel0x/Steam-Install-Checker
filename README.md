@@ -6,3 +6,5 @@
 
 And yes. That actually happens. (To some peole.)
 I had a very good reason for making this.
+
+In the end it would have pürobably taken me the same time go through the directories manually... but making this was more enjoyable.
