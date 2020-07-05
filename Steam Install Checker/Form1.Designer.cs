@@ -40,7 +40,7 @@
             this.btn_analyze.TabIndex = 0;
             this.btn_analyze.Text = "Analyze Steam Folders";
             this.btn_analyze.UseVisualStyleBackColor = true;
-            this.btn_analyze.Click += new System.EventHandler(this.btn_analyze_Click);
+            this.btn_analyze.Click += new System.EventHandler(this.Analyze_Click);
             // 
             // tb_output
             // 
