@@ -37,6 +37,7 @@ namespace Steam_Install_Checker
             
             Dictionary<string/*drives*/, List<string/*games*/>> gameDictionary = new Dictionary<string, List<string>>();
             tb_output.Text += "O - Game dictionary created.\r\n";
+            int gamecount = 0;
             foreach (string loc in locs)
             {
                 tb_output.Text += "\r\nO - Listing games in " + loc + ".\r\n\r\n";
@@ -47,10 +48,12 @@ namespace Steam_Install_Checker
                     tb_output.Text += game + "\r\n";
                 }
                 gameDictionary.Add(loc, localGames);
+                gamecount += gameDictionary[loc].Count;
             }
-            
+            tb_output.Text += "\r\nO - " + gamecount + " installed games found.\r\n";
+
             //find duplicates
-            
+
             tb_output.Text += "\r\n";
             List<string> allgames = new List<string>();
             List<string> dups = new List<string>();
@@ -66,6 +69,7 @@ namespace Steam_Install_Checker
                     allgames.Add(game);
                 }
             }
+            tb_output.Text += "\r\nO - " + dups.Count + " duplicates found.\r\n";
 
             //organize duplicates in another dictionary
 
