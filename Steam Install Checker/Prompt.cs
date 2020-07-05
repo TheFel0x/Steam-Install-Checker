@@ -11,7 +11,7 @@ namespace Steam_Install_Checker
     {
         public static string ShowDialog(string text, string caption)
         {
-            Form prompt = new Form()
+            System.Windows.Forms.Form prompt = new System.Windows.Forms.Form()
             {
                 Width = 500,
                 Height = 150,
