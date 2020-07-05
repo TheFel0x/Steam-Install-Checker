@@ -54,7 +54,6 @@ namespace Steam_Install_Checker
 
             //find duplicates
 
-            tb_output.Text += "\r\n";
             List<string> allgames = new List<string>();
             List<string> dups = new List<string>();
             foreach (string loc in locs)
@@ -71,29 +70,29 @@ namespace Steam_Install_Checker
             }
             tb_output.Text += "\r\nO - " + dups.Count + " duplicates found.\r\n";
 
-            //organize duplicates in another dictionary
-
-            Dictionary<string/*dup game*/, List<string/*drives*/>> dupDictionary = new Dictionary<string, List<string>>();
-            tb_output.Text += "\r\nO - Duplicate Dictionary created.\r\n";
-            foreach (string dup in dups)
-            {
-                tb_output.Text += "\r\nLocations of " + dup + ":\r\n";
-                List<string> driveList = new List<string>();
-                foreach (string loc in locs)
-                {
-                    if (gameDictionary[loc].Contains(dup))
-                    {
-                        driveList.Add(loc);
-                        tb_output.Text += loc + "\r\n";
-                    }
-                }
-                dupDictionary.Add(dup, driveList);
-            }
-
             if (dups.Count > 0)
             {
+                //organize duplicates in another dictionary
+
+                Dictionary<string/*dup game*/, List<string/*drives*/>> dupDictionary = new Dictionary<string, List<string>>();
+                tb_output.Text += "\r\nO - Duplicate Dictionary created.\r\n";
+                foreach (string dup in dups)
+                {
+                    tb_output.Text += "\r\nLocations of " + dup + ":\r\n";
+                    List<string> driveList = new List<string>();
+                    foreach (string loc in locs)
+                    {
+                        if (gameDictionary[loc].Contains(dup))
+                        {
+                            driveList.Add(loc);
+                            tb_output.Text += loc + "\r\n";
+                        }
+                    }
+                    dupDictionary.Add(dup, driveList);
+                }
+
                 //yesno: deletion assistant?
-                
+
                 DialogResult dialogResult = MessageBox.Show("Done. All dups found.\nStart duplicate-deletion-Assistant?", "Done.", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
